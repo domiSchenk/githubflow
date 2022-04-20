@@ -1,0 +1,44 @@
+{
+    "name": "githubflow",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "start": "nodemon --watch ./src --ext ts --exec \"npm run build\"",
+        "create": "npm run build && npm run test",
+        "build": "tsc -p .",
+        "local": "sudo npm i -g && pizza",
+        "refresh": "rm -rf ./node_modules ./package-lock.json && npm install",
+        "esbuild": "esbuild --bundle --outfile=./dist/index.js ./src/index.ts --platform=node"
+    },
+    "keywords": [],
+    "author": "domiSchenk",
+    "license": "MIT",
+    "main": "./dist/index.js",
+    "bin": {
+        "ghflow": "./dist/index.js"
+    },
+    "dependencies": {
+        "chalk": "^4.1.2",
+        "clear": "^0.1.0",
+        "commander": "^9.2.0",
+        "figlet": "^1.5.2",
+        "path": "^0.12.7",
+        "zx": "^6.1.0"
+    },
+    "devDependencies": {
+        "@types/clear": "^0.1.2",
+        "@types/figlet": "^1.5.4",
+        "@types/node": "^17.0.25",
+        "esbuild": "^0.14.36",
+        "nodemon": "^2.0.15",
+        "ts-node": "^10.7.0",
+        "typescript": "^4.6.3"
+    },
+    "prettier": {
+        "trailingComma": "all",
+        "bracketSameLine": true,
+        "tabWidth": 4,
+        "singleQuote": true,
+        "printWidth": 130
+    }
+}

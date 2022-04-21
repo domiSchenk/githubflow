@@ -8,7 +8,7 @@
         "build": "tsc -p .",
         "local": "sudo npm i -g && pizza",
         "refresh": "rm -rf ./node_modules ./package-lock.json && npm install",
-        "esbuild": "esbuild --bundle --outfile=./dist/index.js ./src/index.ts --platform=node"
+        "esbuild": "esbuild --bundle --outfile=./dist/index.js ./src/index.ts --platform=node  --watch"
     },
     "keywords": [],
     "author": "domiSchenk",

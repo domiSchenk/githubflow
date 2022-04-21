@@ -1,5 +1,6 @@
-import { $ } from 'zx';
+import { checkRepoStatus } from '../common/commands';
 
 export async function status() {
-    $`pwd`;
+    const status = await checkRepoStatus();
+    console.log(status);
 }

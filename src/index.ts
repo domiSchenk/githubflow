@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 
 import { red } from 'chalk';
-import clear from 'clear';
-// import figlet from 'figlet';
-import path from 'path';
 import { Command } from 'commander';
+import { createFeatureBranch } from './commands/feature';
+import { doFinish } from './commands/finish';
+import { createHotfixBranch } from './commands/hotfix';
+import { createReleaseBranch } from './commands/release';
 import { status } from './commands/status';
 
 const cliName = 'ghflow';
@@ -19,20 +20,28 @@ const program = new Command();
 
 program.name(cliName).description(description).version(version);
 
-program.command('feature [name]').action((name) => {
-    console.log(`Feature: ${name}`);
+program.command('feature [name]').action(async (name) => {
+    await createFeatureBranch(name);
 });
 
-program.command('hotfix [name]').action((name) => {
-    console.log(`Hotfix: ${name}`);
+program.command('hotfix [name]').action(async (name) => {
+    await createHotfixBranch(name);
+});
+program.command('release [name]').action(async (name) => {
+    await createReleaseBranch(name);
 });
 
-program.command('finish').action(() => {
-    console.log(`finish`);
+program.command('finish').action(async () => {
+    await doFinish();
 });
 
 program.command('status').action(() => {
     status();
 });
+
+program.command('init').action(() => {
+    console.log('yes init!');
+});
+
 
 program.parse(process.argv);
